@@ -21,7 +21,7 @@ with open('XGB_fraud.pickle', 'rb') as model_file:
     fraud_model = pickle.load(model_file)
 
 
-def compute_features(transactions, address):
+def compute_features(transactions, token_transactions, address):
     transactions['timeStamp'] = pd.to_datetime(
         transactions['timeStamp'], unit='s')
     transactions = transactions.sort_values('timeStamp')
@@ -72,16 +72,17 @@ def compute_features(transactions, address):
     total_ether_balance = received_tnx['value'].astype(
         float).sum() - total_ether_sent
 
-    erc20_received = transactions[transactions['contractAddress'] != ""]
-    erc20_total_ether_received = erc20_received[erc20_received['to'].str.lower(
+    # ERC20 Features
+    erc20_received = token_transactions[token_transactions['to'].str.lower(
+    ) == address.lower()]
+    erc20_total_ether_received = erc20_received['value'].astype(float).sum()
+    erc20_total_ether_sent = token_transactions[token_transactions['from'].str.lower(
     ) == address.lower()]['value'].astype(float).sum()
-    erc20_total_ether_sent = sent_tnx[sent_tnx['contractAddress'] != '']['value'].astype(
-        float).sum()
-    erc20_total_ether_sent_contract = sent_tnx[sent_tnx['contractAddress']
-                                               != '']['contractAddress'].nunique()
-    erc20_uniq_sent_addr = sent_tnx[sent_tnx['contractAddress'] != '']['to'].nunique(
-    )
-    erc20_uniq_rec_token_name = erc20_received['input'].nunique()
+    erc20_total_ether_sent_contract = token_transactions[token_transactions['from'].str.lower(
+    ) == address.lower()]['contractAddress'].nunique()
+    erc20_uniq_sent_addr = token_transactions[token_transactions['from'].str.lower(
+    ) == address.lower()]['to'].nunique()
+    erc20_uniq_rec_token_name = token_transactions['tokenName'].nunique()
 
     features = {
         'Avg min between sent tnx': avg_min_between_sent_tnx,
@@ -129,19 +130,37 @@ def get_transactions():
         f"&apikey={ETHERSCAN_API_KEY}"
     )
 
+    # Etherscan API endpoint for ERC20 token transactions
+    token_url = (
+        f"https://api.etherscan.io/api"
+        f"?module=account&action=tokentx"
+        f"&address={address}"
+        f"&startblock=0&endblock=99999999&sort=asc"
+        f"&apikey={ETHERSCAN_API_KEY}"
+    )
+
     try:
         response = requests.get(etherscan_url, timeout=10)
         response.raise_for_status()
+        token_response = requests.get(token_url, timeout=10)
+        token_response.raise_for_status()
     except requests.exceptions.RequestException as e:
         return jsonify({'error': 'Failed to fetch transactions', 'message': str(e)}), 500
 
     data = response.json()
+    token_data = token_response.json()
 
     if data['status'] != '1':
         return jsonify({'error': 'Failed to fetch transactions', 'message': data.get('message', 'Unknown error')}), 500
 
+    if token_data['status'] != '1' and token_data['message'] != 'No transactions found':
+        return jsonify({'error': 'Failed to fetch token transactions', 'message': token_data.get('message', 'Unknown error')}), 500
+
     transactions = data.get('result', [])
+    token_transactions = token_data.get('result', [])
+
     transactions_df = pd.DataFrame(transactions)
+    token_transactions_df = pd.DataFrame(token_transactions)
 
     required_columns = [
         'blockHash', 'blockNumber', 'confirmations', 'contractAddress', 'cumulativeGasUsed',
@@ -153,8 +172,15 @@ def get_transactions():
     if missing_columns:
         return jsonify({'error': f'Missing columns in transaction data: {missing_columns}'}), 500
 
+    if not token_transactions_df.empty:
+        token_transactions_df.rename(
+            columns={'tokenName': 'tokenName'}, inplace=True)
+    else:
+        token_transactions_df = pd.DataFrame(columns=['tokenName'])
+
     try:
-        features = compute_features(transactions_df, address)
+        features = compute_features(
+            transactions_df, token_transactions_df, address)
     except Exception as e:
         return jsonify({'error': 'Error in feature computation', 'message': str(e)}), 500
 
@@ -171,6 +197,7 @@ def get_transactions():
     response_data = {
         'address': address,
         'transactions': transactions,
+        'token_transactions': token_transactions,
         'fraud_prediction': int(prediction[0]),
         'fraud_probability': float(prediction_proba[0]),
         'features': features
