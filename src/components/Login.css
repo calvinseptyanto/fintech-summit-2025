@@ -1,0 +1,67 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f4ff; /* Light blue page background */
+  font-family: 'Arial', sans-serif; /* Optional: Set a clean font */
+}
+
+.h-custom {
+  min-height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  justify-content: space-between; /* Space between form and footer */
+  align-items: center; /* Center horizontally */
+}
+
+.form-container {
+  width: 80%; /* Control the size of the form area */
+  max-width: 900px; /* Set a max width for larger screens */
+  padding: 30px; /* Padding inside the container */
+  background-color: #ffffff; /* White background for contrast */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+}
+
+.footer-custom {
+  width: 100%; /* Make footer span the entire width */
+  background-color: #0d6efd; /* Same blue as the button */
+  color: white; /* White text for contrast */
+  text-align: center; /* Center align the text */
+  padding: 20px 0; /* Vertical padding for proper spacing */
+  font-size: 14px; /* Adjust font size */
+}
+
+.footer-icons {
+  margin-top: 10px; /* Space above the social icons */
+}
+
+.footer-icons a {
+  color: white; /* White icon color */
+  margin: 0 10px; /* Horizontal spacing between icons */
+  font-size: 16px; /* Icon size */
+  text-decoration: none; /* Remove underline */
+}
+
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+
+@media (max-width: 450px) {
+  .h-custom {
+    min-height: 100%;
+  }
+
+  .form-container {
+    width: 95%; /* Adjust width for smaller screens */
+    padding: 20px; /* Reduce padding */
+  }
+
+  .footer-custom {
+    font-size: 12px; /* Reduce font size for smaller screens */
+  }
+}
