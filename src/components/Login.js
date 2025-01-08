@@ -21,7 +21,7 @@ function Login() {
 
             <p className="lead fw-normal mb-0 me-3">Sign in with</p>
             {/* <img src='/corppassICONnobg.png' className='img-fluid shadow-4' alt='...' /> */}
-            <a href="https://auth.singpass.gov.sg/main" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.corppass.gov.sg/portal/" target="_blank" rel="noopener noreferrer">
               <img src='/corppassICONnobg.png' className='bg-transparent' alt='CorpPass Icon' style={{ width: '120px', height: 'auto' }}  />
             </a>
 
