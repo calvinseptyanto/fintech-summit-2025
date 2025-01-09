@@ -9,7 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/registration" element={<Registration />}/>
-        <Route path="/homepage" element={<RedirectToHtml page="hp.html" />} />
+        <Route path="/homepage" element={<RedirectToHtml page="template_hp.html" />} />
       </Routes>
     </Router>
   );

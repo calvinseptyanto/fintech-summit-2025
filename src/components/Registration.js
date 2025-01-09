@@ -69,7 +69,7 @@ function App() {
 
               <MDBBtn className='w-100 mb-4' size='md'>sign up</MDBBtn>
               <MDBBtn className='w-100 mb-4' size='md' onClick={() => navigate("/")} >back to log in</MDBBtn>
-              <div className="text-center">
+              {/* <div className="text-center">
 
                 <p>or sign up with:</p>
 
@@ -89,7 +89,7 @@ function App() {
                   <MDBIcon fab icon='github' size="sm"/>
                 </MDBBtn>
 
-              </div>
+              </div> */}
 
             </MDBCardBody>
           </MDBCard>
