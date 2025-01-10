@@ -24,16 +24,13 @@ function App() {
 
         <MDBCol md='6' className='text-center text-md-start d-flex flex-column justify-content-center'>
 
-          <h1 className="my-5 display-3 fw-bold ls-tight px-3" style={{color: 'hsl(218, 81%, 95%)'}}>
-            The standard <br />
+        <h1 className="my-5 display-3 fw-bold ls-tight px-3" style={{color: 'hsl(218, 81%, 95%)'}}>
+            Redefining Trust <br />
             <span style={{color: 'hsl(218, 81%, 75%)'}}>for onchain business</span>
           </h1>
 
           <p className='px-3' style={{color: 'hsl(218, 81%, 85%)'}}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Eveniet, itaque accusantium odio, soluta, corrupti aliquam
-            quibusdam tempora at cupiditate quis eum maiores libero
-            veritatis? Dicta facilis sint aliquid ipsum atque?
+          Credify transforms business verification with seamless government integration, decentralized data storage, and advanced AI. Our explainable AI empowers service providers with transparency while ensuring continuous trustworthiness updates and safeguarding privacy.
           </p>
 
         </MDBCol>

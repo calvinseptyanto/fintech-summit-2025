@@ -29,15 +29,9 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-<<<<<<< HEAD
             <!-- <form class="custom-form header-form ms-lg-3 ms-md-3 me-lg-auto me-md-auto order-2 order-lg-0 order-md-0" action="#" method="get" role="form">
                 <input class="form-control" name="search" type="text" placeholder="Search" aria-label="Search">
             </form> -->
-=======
-            <form class="custom-form header-form ms-lg-3 ms-md-3 me-lg-auto me-md-auto order-2 order-lg-0 order-md-0" action="#" method="get" role="form">
-                <input class="form-control" name="search" type="text" placeholder="Search" aria-label="Search">
-            </form>
->>>>>>> origin/settings
 
             <div class="navbar-nav me-lg-2">
                 <div class="nav-item text-nowrap d-flex align-items-center">
@@ -52,8 +46,51 @@
                         <ul class="dropdown-menu dropdown-menu-lg-end notifications-block-wrap bg-white shadow" aria-labelledby="navbarLightDropdownMenuLink">
                             <small>Notifications</small>
 
+                            <li class="notifications-block border-bottom pb-2 mb-2" onclick="showPopup(event)">
+                                <div class="dropdown-item d-flex  align-items-center" >
+                                    <div class="notifications-icon-wrap bg-info">
+                                        <i class="notifications-icon bi-bell"></i>
+                                    </div>
+
+                                    <div>
+                                        <span>Your have received request from Northern Trust.</span>
+                                        <p>3 hours ago</p>
+                                    </div>
+                                </div>
+                            </li>
+
                             <li class="notifications-block border-bottom pb-2 mb-2">
-                                <a class="dropdown-item d-flex  align-items-center" href="#">
+                                <div class="dropdown-item d-flex align-items-center">
+                                    <div class="notifications-icon-wrap bg-danger">
+                                        <i class="notifications-icon bi-question-circle"></i>
+                                    </div>
+
+                                    <div>
+                                        <span>Account verification failed.</span>
+
+                                        <p>9 hours ago</p>
+                                    </div>
+                                </div>
+                            </li>
+
+                            
+
+                            <li class="notifications-block border-bottom pb-2 mb-2">
+                                <div class="dropdown-item d-flex align-items-center">
+                                    <div class="notifications-icon-wrap bg-info">
+                                        <i class="notifications-icon bi-folder"></i>
+                                    </div>
+
+                                    <div>
+                                        <span>Please check. We have sent a Daily report.</span>
+
+                                        <p>1 day ago</p>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="notifications-block">
+                                <div class="dropdown-item d-flex  align-items-center">
                                     <div class="notifications-icon-wrap bg-success">
                                         <i class="notifications-icon bi-check-circle-fill"></i>
                                     </div>
@@ -63,44 +100,47 @@
 
                                         <p>12 days ago</p>
                                     </div>
-                                </a>
+                                </div>
                             </li>
 
-                            <li class="notifications-block border-bottom pb-2 mb-2">
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="notifications-icon-wrap bg-info">
-                                        <i class="notifications-icon bi-folder"></i>
-                                    </div>
-
-                                    <div>
-                                        <span>Please check. We have sent a Daily report.</span>
-
-                                        <p>10 days ago</p>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li class="notifications-block">
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="notifications-icon-wrap bg-danger">
-                                        <i class="notifications-icon bi-question-circle"></i>
-                                    </div>
-
-                                    <div>
-                                        <span>Account verification failed.</span>
-
-                                        <p>1 hour ago</p>
-                                    </div>
-                                </a>
-                            </li>
+                            
                         </ul>
+
+                        <!-- Popup -->
+                        <div class="popup-overlay" id="popupOverlay" style="display: none;" onclick="closePopup(event)">
+                            <div class="popup-content" onclick="event.stopPropagation()">
+                                <!-- Shadow Effect -->
+                                <div class="popup-shadow"></div>
+
+                                <!-- Popup Title -->
+                                <!-- <div class="popup-title">CREDIFY</div> -->
+                                <img src="images/credify_icon.png" alt="Credify Logo" style="width: 80px; height: auto; margin-right: 10px;">
+
+                                <!-- Popup Body -->
+                                <div class="popup-body">
+                                    <p style="font-size: 1rem; margin-bottom: 15px;">Do you wish to share your details with <strong>Northern Trust</strong>?</p>
+                                    <div class="info-list">
+                                        <p style="font-size: 0.95rem; margin-bottom: 10px;">Information shared:</p>
+                                        <ul style="padding-left: 20px; margin-bottom: 15px;">
+                                            <li>Company Profile</li>
+                                            <li>Credit Score</li>
+                                            <li>Shareholders</li>
+                                            <li>And 5 more...</li>
+                                        </ul>
+                                        <a href="#" style="font-size: 0.85rem; color: #007bff; text-decoration: underline;" onclick="event.preventDefault();">Show more</a>
+                                    </div>
+                                </div>
+
+                                <!-- Buttons -->
+                                <div class="button-group" style="display: flex; justify-content: space-between; margin-top: 15px;">
+                                    <button class="button-reject" onclick="closePopup()" style="background-color: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 5px;">Reject</button>
+                                    <button class="button-approve" onclick="closePopup()" style="background-color: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px;">Approve</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-<<<<<<< HEAD
                     <!-- <div class="dropdown ps-1">
-=======
-                    <div class="dropdown ps-1">
->>>>>>> origin/settings
                         <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi-three-dots-vertical"></i>
                         </a>
@@ -152,11 +192,7 @@
                                 </div>
                             </div>
                         </div>
-<<<<<<< HEAD
                     </div> -->
-=======
-                    </div>
->>>>>>> origin/settings
 
                     <div class="dropdown px-3">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -182,11 +218,7 @@
                             </li>
 
                             <li>
-<<<<<<< HEAD
-                                <a class="dropdown-item" href="setting.html">
-=======
                                 <a class="dropdown-item" href="settings.html">
->>>>>>> origin/settings
                                     <i class="bi-gear me-2"></i>
                                     Settings
                                 </a>
@@ -226,30 +258,18 @@
                                     <i class="bi-wallet me-2"></i> Web3 Wallet
                                 </a>
                             </li>
-<<<<<<< HEAD
                             <li class="nav-item">
-=======
-                            <li class="nav-item">       
->>>>>>> origin/settings
                                 <a class="nav-link" href="#" data-page="profile.html">
                                     <i class="bi-person me-2"></i> Company Profile
                                 </a>
                             </li>
                             <li class="nav-item">
-<<<<<<< HEAD
-                                <a class="nav-link" href="#" data-page="setting.html">
-=======
                                 <a class="nav-link" href="#" data-page="settings.html">
->>>>>>> origin/settings
                                     <i class="bi-gear me-2"></i> Settings
                                 </a>
                             </li>
                             <li class="nav-item">
-<<<<<<< HEAD
-                                <a class="nav-link" href="help-center.html">
-=======
                                 <a class="nav-link" href="#" data-page="help-center.html"">
->>>>>>> origin/settings
                                     <i class="bi-question-circle me-2"></i>
                                     Help Center
                                 </a>
@@ -296,6 +316,39 @@
         <script src="js/bootstrap.bundle.min.js"></script>
         <script src="js/apexcharts.min.js"></script>
         <script src="js/custom.js"></script>
+
+        <script>
+            // Show the popup
+            function showPopup() {
+                const popupOverlay = document.getElementById('popupOverlay');
+                popupOverlay.style.display = 'flex'; // Show the popup
+                document.body.classList.add('popup-active'); // Disable background scrolling
+            }
+
+            // Close the popup
+            function closePopup() {
+                const popupOverlay = document.getElementById('popupOverlay');
+                popupOverlay.style.display = 'none'; // Hide the popup
+                document.body.classList.remove('popup-active'); // Re-enable background scrolling
+            }
+
+        
+            // Approve Action (example functionality)
+            function approveAction() {
+              alert('Details shared successfully!');
+              closePopup();
+            }
+
+            document.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', (event) => {
+                    const isStatic = link.getAttribute('data-static');
+                    if (!isStatic) {
+                        event.preventDefault(); // Prevent navigation for non-static links
+                    }
+                });
+            });
+
+        </script>
 
         
         <script>
@@ -414,6 +467,12 @@
                 // Dropdown Navigation
                 dropdownLinks.forEach(link => {
                     link.addEventListener("click", (event) => {
+                        // Exclude dropdown-items inside the notifications or popup
+                        if (link.closest(".notifications-block") || link.closest(".popup-content")) {
+                            console.log("Skipping dropdown-item inside notifications or popup.");
+                            return;
+                        }
+                        
                         const isStatic = link.getAttribute("data-static");
                         if (isStatic) {
                             // If it's a static link (e.g., Logout), allow default behavior
