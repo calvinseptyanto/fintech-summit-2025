@@ -1,0 +1,29 @@
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+.h-custom {
+  height: calc(100% - 73px);
+  /* display: flex; */
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer {
+  text-align: center;
+  padding: 10px 0;
+  background-color: #0d6efd; /* Same as primary color */
+  color: white;
+  position: relative; /* Or 'fixed' if you want it always visible */
+  bottom: 0;
+  width: 100%;
+}
+
+@media (max-width: 450px) {
+  .h-custom {
+  height: 100%;
+  }
+}
