@@ -53,3 +53,31 @@ html, body {
   width: 100%;
   max-width: 900px; /* Limit maximum width */
 }
+
+.corppass-signup {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+}
+
+.corppass-signup:hover {
+  text-decoration: underline;
+}
+
+.feedback-link {
+  text-align: center;
+  margin-top: 10px;
+  display: block;
+  color: #1266f1;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.feedback-link:hover {
+  text-decoration: underline;
+}
+
+.d-flex.flex-row.align-items-center.justify-content-center.mb-4 {
+  margin-top: -10px;
+}
