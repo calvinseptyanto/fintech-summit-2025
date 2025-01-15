@@ -53,6 +53,31 @@ function App() {
               <MDBBtn className='w-100 mb-4' size='md'>sign up</MDBBtn>
               <MDBBtn className='w-100 mb-4' size='md' onClick={() => navigate("/")} >back to log in</MDBBtn>
 
+              <MDBBtn className='w-100 mb-4' size='md' onClick={() => navigate("/")}>
+                back to log in
+              </MDBBtn>
+
+              <MDBBtn
+                className='w-100 mb-4 corppass-btn'
+                size='md'
+                onClick={() => window.location.href = 'https://www.corppass.gov.sg/portal/'}
+              >
+                <img
+                  src="/Users/charlie/Downloads/corppass-logo.png"
+                  alt="Sign in with Corppass"
+                  style={{ marginRight: '10px', height: '20px' }}
+                />
+                Sign in with Corppass
+              </MDBBtn>
+
+              <a
+                href="https://www.corppass.gov.sg/portal/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="feedback-link"
+              >
+                Feedback
+              </a>
             </MDBCardBody>
           </MDBCard>
 

@@ -43,7 +43,36 @@ function App() {
           <MDBCard className='my-5 bg-glass'>
             <MDBCardBody className='p-5'>
 
-            <MDBInput wrapperClass='mb-4' label='Unique Entity Number (UEN)' id='form1' type='text' aria-describedby="text1"/>
+            <div className="d-flex flex-row align-items-center justify-content-center mb-4">
+                <span style={{ fontSize: '18px', fontWeight: 'bold', marginRight: '10px' }}>Sign up with</span>
+                <a href="https://www.corppass.gov.sg/portal/" target="_blank" rel="noopener noreferrer">
+                  <img src="/corppassICONnobg.png" alt="Corppass" style={{ height: '24px', verticalAlign: 'middle' }} />
+                </a>
+              </div>
+
+              <MDBInput wrapperClass='mb-4' label='Unique Entity Number (UEN)' id='form1' type='text' aria-describedby="text1" />
+              <div id="text1" className="form-text">Personal details of the Corppass Administrator and Registered Officer</div>
+
+              <MDBRow>
+                <MDBCol col='6'>
+                  <MDBInput wrapperClass='mb-4' label='NRIC number' id='form2' type='text' />
+                </MDBCol>
+                <MDBCol col='6'>
+                  <MDBInput wrapperClass='mb-4' label='Name' id='form3' type='text' />
+                </MDBCol>
+              </MDBRow>
+
+              <MDBInput wrapperClass='mb-4' label='Email' id='form4' type='email' />
+              <MDBInput wrapperClass='mb-4' label='Password' id='form5' type='password' />
+
+              <div className='d-flex justify-content-center mb-4'>
+                <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Subscribe to our newsletter' />
+              </div>
+
+              <MDBBtn className='w-100 mb-4' size='md'>Sign Up</MDBBtn>
+              <MDBBtn className='w-100 mb-4' size='md' onClick={() => navigate("/")}>Back to Log In</MDBBtn>
+              
+            {/* <MDBInput wrapperClass='mb-4' label='Unique Entity Number (UEN)' id='form1' type='text' aria-describedby="text1"/>
             <div id="text1" className="form-text"> Personal details of the Corppass Administrator and Registered Officer </div>
               <MDBRow>
 
@@ -65,7 +94,8 @@ function App() {
               </div>
 
               <MDBBtn className='w-100 mb-4' size='md'>sign up</MDBBtn>
-              <MDBBtn className='w-100 mb-4' size='md' onClick={() => navigate("/")} >back to log in</MDBBtn>
+              <MDBBtn className='w-100 mb-4' size='md' onClick={() => navigate("/")} >back to log in</MDBBtn> */}
+              
               {/* <div className="text-center">
 
                 <p>or sign up with:</p>
@@ -87,6 +117,7 @@ function App() {
                 </MDBBtn>
 
               </div> */}
+      
 
             </MDBCardBody>
           </MDBCard>
