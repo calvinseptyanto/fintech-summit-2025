@@ -15,11 +15,15 @@
         <link href="css/bootstrap-icons.css" rel="stylesheet">
         <link href="css/apexcharts.css" rel="stylesheet">
         <link href="css/tooplate-mini-finance.css" rel="stylesheet">
-        <link href="css/hp_service.css" rel="stylesheet">
+
+        <script>
+            function connectWallet() {
+                window.location.href = 'https://connectwallet.thirdweb-example.com';
+            }
+        </script>
     </head>
     
     <body>
-
         <header class="navbar sticky-top flex-md-nowrap">
             <div class="col-md-3 col-lg-3 me-0 px-3 fs-6">
                 <a class="navbar-brand" href="#">
@@ -48,8 +52,51 @@
                         <ul class="dropdown-menu dropdown-menu-lg-end notifications-block-wrap bg-white shadow" aria-labelledby="navbarLightDropdownMenuLink">
                             <small>Notifications</small>
 
+                            <li class="notifications-block border-bottom pb-2 mb-2" onclick="showPopup(event)">
+                                <div class="dropdown-item d-flex  align-items-center" >
+                                    <div class="notifications-icon-wrap bg-info">
+                                        <i class="notifications-icon bi-bell"></i>
+                                    </div>
+
+                                    <div>
+                                        <span>Your have received request from Northern Trust.</span>
+                                        <p>3 hours ago</p>
+                                    </div>
+                                </div>
+                            </li>
+
                             <li class="notifications-block border-bottom pb-2 mb-2">
-                                <a class="dropdown-item d-flex  align-items-center" href="#">
+                                <div class="dropdown-item d-flex align-items-center">
+                                    <div class="notifications-icon-wrap bg-danger">
+                                        <i class="notifications-icon bi-question-circle"></i>
+                                    </div>
+
+                                    <div>
+                                        <span>Account verification failed.</span>
+
+                                        <p>9 hours ago</p>
+                                    </div>
+                                </div>
+                            </li>
+
+                            
+
+                            <li class="notifications-block border-bottom pb-2 mb-2">
+                                <div class="dropdown-item d-flex align-items-center">
+                                    <div class="notifications-icon-wrap bg-info">
+                                        <i class="notifications-icon bi-folder"></i>
+                                    </div>
+
+                                    <div>
+                                        <span>Please check. We have sent a Daily report.</span>
+
+                                        <p>1 day ago</p>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="notifications-block">
+                                <div class="dropdown-item d-flex  align-items-center">
                                     <div class="notifications-icon-wrap bg-success">
                                         <i class="notifications-icon bi-check-circle-fill"></i>
                                     </div>
@@ -59,40 +106,47 @@
 
                                         <p>12 days ago</p>
                                     </div>
-                                </a>
+                                </div>
                             </li>
 
-                            <li class="notifications-block border-bottom pb-2 mb-2">
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="notifications-icon-wrap bg-info">
-                                        <i class="notifications-icon bi-folder"></i>
-                                    </div>
-
-                                    <div>
-                                        <span>Please check. We have sent a Daily report.</span>
-
-                                        <p>10 days ago</p>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li class="notifications-block">
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="notifications-icon-wrap bg-danger">
-                                        <i class="notifications-icon bi-question-circle"></i>
-                                    </div>
-
-                                    <div>
-                                        <span>Account verification failed.</span>
-
-                                        <p>1 hour ago</p>
-                                    </div>
-                                </a>
-                            </li>
+                            
                         </ul>
+
+                        <!-- Popup -->
+                        <div class="popup-overlay" id="popupOverlay" style="display: none;" onclick="closePopup(event)">
+                            <div class="popup-content" onclick="event.stopPropagation()">
+                                <!-- Shadow Effect -->
+                                <div class="popup-shadow"></div>
+
+                                <!-- Popup Title -->
+                                <!-- <div class="popup-title">CREDIFY</div> -->
+                                <img src="images/credify_icon.png" alt="Credify Logo" style="width: 80px; height: auto; margin-right: 10px;">
+
+                                <!-- Popup Body -->
+                                <div class="popup-body">
+                                    <p style="font-size: 1rem; margin-bottom: 15px;">Do you wish to share your details with <strong>Northern Trust</strong>?</p>
+                                    <div class="info-list">
+                                        <p style="font-size: 0.95rem; margin-bottom: 10px;">Information shared:</p>
+                                        <ul style="padding-left: 20px; margin-bottom: 15px;">
+                                            <li>Company Profile</li>
+                                            <li>Credit Score</li>
+                                            <li>Shareholders</li>
+                                            <li>And 5 more...</li>
+                                        </ul>
+                                        <a href="#" style="font-size: 0.85rem; color: #007bff; text-decoration: underline;" onclick="event.preventDefault();">Show more</a>
+                                    </div>
+                                </div>
+
+                                <!-- Buttons -->
+                                <div class="button-group" style="display: flex; justify-content: space-between; margin-top: 15px;">
+                                    <button class="button-reject" onclick="closePopup()" style="background-color: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 5px;">Reject</button>
+                                    <button class="button-approve" onclick="closePopup()" style="background-color: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px;">Approve</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="dropdown ps-1">
+                    <!-- <div class="dropdown ps-1">
                         <a class="nav-link dropdown-toggle text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi-three-dots-vertical"></i>
                         </a>
@@ -144,30 +198,30 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="dropdown px-3">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="images/services/northerntrust.jpg" class="profile-image img-fluid" alt="">
+                            <img src="images/company.png" class="profile-image img-fluid" alt="">
                         </a>
                         <ul class="dropdown-menu bg-white shadow">
                             <li>
                                 <div class="dropdown-menu-profile-thumb d-flex">
-                                    <img src="images/services/northerntrust.jpg" class="profile-image img-fluid me-3" alt="">
+                                    <img src="images/company.png" class="profile-image img-fluid me-3" alt="">
 
                                     <div class="d-flex flex-column">
-                                        <small>Northern Trust</small>
-                                        <a href="#">northerntrust@site.com</a>
+                                        <small>Thomas</small>
+                                        <a href="#">thomas@site.com</a>
                                     </div>
                                 </div>
                             </li>
 
-                            <!-- <li>
+                            <li>
                                 <a class="dropdown-item" href="profile.html">
                                     <i class="bi-person me-2"></i>
                                     Profile
                                 </a>
-                            </li> -->
+                            </li>
 
                             <li>
                                 <a class="dropdown-item" href="settings.html">
@@ -195,96 +249,69 @@
             </div>
         </header>
 
+        <div class="container-fluid">
+            <div class="row">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-3 d-md-block sidebar collapse">
+                    <div class="position-sticky py-4 px-3 sidebar-sticky">
+                        <ul class="nav flex-column h-100">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#" data-page="overview.html">
+                                    <i class="bi-house-fill me-2"></i> Overview
+                                </a>
+                            </li>
+                            <!-- <li class="nav-item">
+                                <a class="nav-link" href="#" data-page="wallet.html">
+                                    <i class="bi-wallet me-2"></i> Web3 Wallet
+                                </a>
+                            </li> -->
 
-        <div class="search-engine-container d-flex flex-column justify-content-center align-items-center vh-100">
-            <!-- Image Above the Search Box -->
-            <div class="mb-4">
-                <img
-                src="images/credify_logo.webp"
-                alt="Search Logo"
-                class="img-fluid logo-image"
-                style="width: 150px; height: auto;"
-                />
-            </div>
+                            <!-- <li class="nav-item">
+                                <a class="nav-link" href="#" data-page="profile.html">
+                                    <i class="bi-person me-2"></i> Company Profile
+                                </a>
+                            </li> -->
 
-            <!-- Search Box -->
-            <div class="search-bar mb-5">
-              <input
-                type="text"
-                id="search-input"
-                class="form-control search-input"
-                placeholder="Search the companies"
-                onkeyup="filterCompanies()"
-              />
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-page="settings.html">
+                                    <i class="bi-gear me-2"></i> Settings
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-page="help-center.html"">
+                                    <i class="bi-question-circle me-2"></i>
+                                    Help Center
+                                </a>
+                            </li>
+
+                            <!-- <li class="nav-item featured-box mt-lg-5 mt-4 mb-4">
+                                <img src="images/credit-card.png" class="img-fluid" alt="">
+
+                                <button class="btn custom-btn" onclick="window.location.href='https://connectwallet.thirdweb-example.com'">Link Web3 Wallet</button>
+                            </li> -->
+
+                            <!-- <li class="nav-item border-top mt-auto pt-2">
+                                <a class="nav-link" href="/" onclick="window.location.href='/'">
+                                    <i class="bi-box-arrow-left me-2"></i>
+                                    Logout
+                                </a>
+                            </li> -->
+                            <li class="nav-item border-top mt-auto pt-2">
+                                <a class="dropdown-item ms-0 me-0" href="/" data-static="true">
+                                    <i class="bi-box-arrow-left me-2"></i>
+                                    Logout
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </nav>
+
+                <main id="main-content" class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+                    <!-- Dynamic content will load here -->
+                </main>
             </div>
-          
-            <!-- Past History Block -->
-            <div class="past-history-container">
-                <div class="past-history-title">Past History</div>
-                <div id="search-results">
-                    <!-- Barclays -->
-                    <div
-                        class="profile-item past-search"
-                        data-name="barclays"
-                    >
-                        <img
-                        src="images/profile/Barclays.png"
-                        alt="Barclays"
-                        />
-                        <div>
-                        <p>
-                            <a href="service_overview.html" class="text-decoration-none text-dark fw-bold"
-                            > Barclays plc</a
-                            >
-                        </p>
-                        <small class="text-muted">Corporate</small>
-                        </div>
-                    </div>
-        
-                    <!-- BrainTrust -->
-                    <div
-                        class="profile-item past-search"
-                        data-name="braintrust"
-                    >
-                        <img
-                        src="images/profile/braintrust.png"
-                        alt="BrainTrust"
-                        />
-                        <div>
-                        <p>
-                            <a href="transation-detail.html" class="text-decoration-none text-dark fw-bold"
-                            > BrainTrust</a
-                            >
-                        </p>
-                        <small class="text-muted">Decentralized Talent</small>
-                        </div>
-                    </div>
-        
-                    <!-- ConsenSys -->
-                    <div
-                        class="profile-item past-search"
-                        data-name="consensys"
-                    >
-                        <img
-                        src="images/profile/consensys.png"
-                        alt="ConsenSys"
-                        />
-                        <div>
-                        <p>
-                            <a href="transation-detail.html" class="text-decoration-none text-dark fw-bold"
-                            > ConsenSys</a
-                            >
-                        </p>
-                        <small class="text-muted">Technology Company</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-          </div>
         </div>
-
-        
-
 
         <footer class="site-footer">
             <div class="container">
@@ -297,6 +324,39 @@
         <script src="js/bootstrap.bundle.min.js"></script>
         <script src="js/apexcharts.min.js"></script>
         <script src="js/custom.js"></script>
+
+        <script>
+            // Show the popup
+            function showPopup() {
+                const popupOverlay = document.getElementById('popupOverlay');
+                popupOverlay.style.display = 'flex'; // Show the popup
+                document.body.classList.add('popup-active'); // Disable background scrolling
+            }
+
+            // Close the popup
+            function closePopup() {
+                const popupOverlay = document.getElementById('popupOverlay');
+                popupOverlay.style.display = 'none'; // Hide the popup
+                document.body.classList.remove('popup-active'); // Re-enable background scrolling
+            }
+
+        
+            // Approve Action (example functionality)
+            function approveAction() {
+              alert('Details shared successfully!');
+              closePopup();
+            }
+
+            document.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', (event) => {
+                    const isStatic = link.getAttribute('data-static');
+                    if (!isStatic) {
+                        event.preventDefault(); // Prevent navigation for non-static links
+                    }
+                });
+            });
+
+        </script>
 
         
         <script>
@@ -415,6 +475,12 @@
                 // Dropdown Navigation
                 dropdownLinks.forEach(link => {
                     link.addEventListener("click", (event) => {
+                        // Exclude dropdown-items inside the notifications or popup
+                        if (link.closest(".notifications-block") || link.closest(".popup-content")) {
+                            console.log("Skipping dropdown-item inside notifications or popup.");
+                            return;
+                        }
+                        
                         const isStatic = link.getAttribute("data-static");
                         if (isStatic) {
                             // If it's a static link (e.g., Logout), allow default behavior
