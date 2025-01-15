@@ -43,6 +43,13 @@ function App() {
           <MDBCard className='my-5 bg-glass'>
             <MDBCardBody className='p-5'>
 
+            <div className="d-flex flex-row align-items-center justify-content-center mb-4">
+                <span style={{ fontSize: '18px', fontWeight: 'bold', marginRight: '10px' }}>Sign up with</span>
+                <a href="https://www.corppass.gov.sg/portal/" target="_blank" rel="noopener noreferrer">
+                  <img src="/corppassICONnobg.png" alt="Corppass" style={{ height: '24px', verticalAlign: 'middle' }} />
+                </a>
+              </div>
+
               <MDBInput wrapperClass='mb-4' label='Email' id='form4' type='email'/>
               <MDBInput wrapperClass='mb-4' label='Password' id='form5' type='password'/>
 
@@ -51,33 +58,31 @@ function App() {
               </div>
 
               <MDBBtn className='w-100 mb-4' size='md'>sign up</MDBBtn>
-              <MDBBtn className='w-100 mb-4' size='md' onClick={() => navigate("/")} >back to log in</MDBBtn>
-
-              <MDBBtn className='w-100 mb-4' size='md' onClick={() => navigate("/")}>
-                back to log in
-              </MDBBtn>
-
-              <MDBBtn
+              {/* <MDBBtn
                 className='w-100 mb-4 corppass-btn'
                 size='md'
                 onClick={() => window.location.href = 'https://www.corppass.gov.sg/portal/'}
               >
-                <img
-                  src="/Users/charlie/Downloads/corppass-logo.png"
-                  alt="Sign in with Corppass"
-                  style={{ marginRight: '10px', height: '20px' }}
-                />
-                Sign in with Corppass
-              </MDBBtn>
+                <div style={{ display: 'flex', alignItems: 'center',justifyContent: 'center', }}> 
+                  <p style={{ margin: 0 }}>Sign up with</p>
+                  <img
+                    src="/corppassICONnobg.png"
+                    alt="Sign Up with Corppass"
+                    style={{ marginLeft: '10px', height: '20px' }}
+                  />
+                </div>
+              </MDBBtn> */}
 
-              <a
+              <MDBBtn className='w-100 mb-4' size='md' onClick={() => navigate("/")} >back to log in</MDBBtn>
+
+              {/* <a
                 href="https://www.corppass.gov.sg/portal/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="feedback-link"
               >
                 Feedback
-              </a>
+              </a> */}
             </MDBCardBody>
           </MDBCard>
 
