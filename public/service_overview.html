@@ -202,16 +202,16 @@
 
                     <div class="dropdown px-3">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="images/company.png" class="profile-image img-fluid" alt="">
+                            <img src="images/golden_horizon.png" class="profile-image img-fluid" alt="">
                         </a>
                         <ul class="dropdown-menu bg-white shadow">
                             <li>
                                 <div class="dropdown-menu-profile-thumb d-flex">
-                                    <img src="images/company.png" class="profile-image img-fluid me-3" alt="">
+                                    <img src="images/golden_horizon.png" class="profile-image img-fluid me-3" alt="">
 
                                     <div class="d-flex flex-column">
-                                        <small>Thomas</small>
-                                        <a href="#">thomas@site.com</a>
+                                        <small>GoldenHorizon</small>
+                                        <a href="#">goldenhorizon@example.com</a>
                                     </div>
                                 </div>
                             </li>
@@ -445,6 +445,37 @@
 
                             if (page === "overview.html") {
                                 renderCharts();
+                                // Get the current date and time for last update
+                                const currentDate = new Date();
+                                // Format the date and time for Singapore timezone (UTC+8)
+                                const options = {
+                                    timeZone: "Asia/Singapore",
+                                    year: "numeric",
+                                    month: "2-digit",
+                                    day: "2-digit",
+                                    hour: "2-digit",
+                                    minute: "2-digit",
+                                    second: "2-digit",
+                                    hour12: false,
+                                };
+                                const formatter = new Intl.DateTimeFormat("en-GB", options);
+                                const formattedDateParts = formatter.formatToParts(currentDate);
+
+                                // Convert the date parts into the desired "YYYY-MM-DDTHH:mm:ss+08:00" format
+                                const dateMap = {};
+                                formattedDateParts.forEach(part => {
+                                    dateMap[part.type] = part.value;
+                                });
+
+                                const formattedDate = `${dateMap.year}-${dateMap.month}-${dateMap.day} ${dateMap.hour}:${dateMap.minute}:${dateMap.second} (UTC+8)`;
+
+                                // Update the <p> element with the formatted date
+                                const lastUpdateElement = document.getElementById("last-update");
+                                if (lastUpdateElement) {
+                                    lastUpdateElement.textContent = formattedDate;
+                                } else {
+                                    console.error('Element with ID "last-update" not found');
+                                }
                             }
                         })
                         .catch((error) => console.error("Error loading page:", error));
