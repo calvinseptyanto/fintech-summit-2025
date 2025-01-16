@@ -52,20 +52,8 @@
                         <ul class="dropdown-menu dropdown-menu-lg-end notifications-block-wrap bg-white shadow" aria-labelledby="navbarLightDropdownMenuLink">
                             <small>Notifications</small>
 
-                            <li class="notifications-block border-bottom pb-2 mb-2" onclick="showPopup(event)">
-                                <div class="dropdown-item d-flex  align-items-center" >
-                                    <div class="notifications-icon-wrap bg-info">
-                                        <i class="notifications-icon bi-bell"></i>
-                                    </div>
 
-                                    <div>
-                                        <span>Your have received request from Northern Trust.</span>
-                                        <p>3 hours ago</p>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li class="notifications-block border-bottom pb-2 mb-2">
+                            <!-- <li class="notifications-block border-bottom pb-2 mb-2">
                                 <div class="dropdown-item d-flex align-items-center">
                                     <div class="notifications-icon-wrap bg-danger">
                                         <i class="notifications-icon bi-question-circle"></i>
@@ -77,7 +65,7 @@
                                         <p>9 hours ago</p>
                                     </div>
                                 </div>
-                            </li>
+                            </li> -->
 
                             
 
@@ -217,21 +205,21 @@
                             </li>
 
                             <li>
-                                <a class="dropdown-item" href="profile.html">
+                                <a class="dropdown-item" href="overview_gh.html">
                                     <i class="bi-person me-2"></i>
                                     Profile
                                 </a>
                             </li>
 
                             <li>
-                                <a class="dropdown-item" href="settings.html">
+                                <a class="dropdown-item" href="overview_gh.html">
                                     <i class="bi-gear me-2"></i>
                                     Settings
                                 </a>
                             </li>
 
                             <li>
-                                <a class="dropdown-item" href="help-center.html">
+                                <a class="dropdown-item" href="overview_gh.html">
                                     <i class="bi-question-circle me-2"></i>
                                     Help
                                 </a>
@@ -255,7 +243,7 @@
                     <div class="position-sticky py-4 px-3 sidebar-sticky">
                         <ul class="nav flex-column h-100">
                             <li class="nav-item">
-                                <a class="nav-link active" href="#" data-page="overview.html">
+                                <a class="nav-link active" href="#" data-page="overview_gh.html">
                                     <i class="bi-house-fill me-2"></i> Overview
                                 </a>
                             </li>
@@ -272,12 +260,12 @@
                             </li> -->
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-page="settings.html">
+                                <a class="nav-link" href="#" data-page="overview_gh.html">
                                     <i class="bi-gear me-2"></i> Settings
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-page="help-center.html"">
+                                <a class="nav-link" href="#" data-page="overview_gh.html">
                                     <i class="bi-question-circle me-2"></i>
                                     Help Center
                                 </a>
@@ -325,38 +313,6 @@
         <script src="js/apexcharts.min.js"></script>
         <script src="js/custom.js"></script>
 
-        <script>
-            // Show the popup
-            function showPopup() {
-                const popupOverlay = document.getElementById('popupOverlay');
-                popupOverlay.style.display = 'flex'; // Show the popup
-                document.body.classList.add('popup-active'); // Disable background scrolling
-            }
-
-            // Close the popup
-            function closePopup() {
-                const popupOverlay = document.getElementById('popupOverlay');
-                popupOverlay.style.display = 'none'; // Hide the popup
-                document.body.classList.remove('popup-active'); // Re-enable background scrolling
-            }
-
-        
-            // Approve Action (example functionality)
-            function approveAction() {
-              alert('Details shared successfully!');
-              closePopup();
-            }
-
-            document.querySelectorAll('a').forEach((link) => {
-                link.addEventListener('click', (event) => {
-                    const isStatic = link.getAttribute('data-static');
-                    if (!isStatic) {
-                        event.preventDefault(); // Prevent navigation for non-static links
-                    }
-                });
-            });
-
-        </script>
 
         
         <script>
@@ -443,7 +399,7 @@
                             featuredLinks.forEach(link => link.classList.remove("active"));
 
 
-                            if (page === "overview.html") {
+                            if (page === "overview_gh.html") {
                                 renderCharts();
                                 // Get the current date and time for last update
                                 const currentDate = new Date();
@@ -482,7 +438,7 @@
                 };
 
                 // Default Page Load
-                const defaultPage = "overview.html";
+                const defaultPage = "overview_gh.html";
                 loadPage(defaultPage);
 
                 // Sidebar Navigation
